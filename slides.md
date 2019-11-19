@@ -1,6 +1,6 @@
 ---
 author:
-- Guido Pleßmann\
+- Guido Pleßmann
 - Julian Endres
 title: DSM modeling in oemof.solph
 subtitle: Introducing the custom component SinkDSM
@@ -29,7 +29,7 @@ Available data: technical DSM potential for groups of households
 
 ![](img/IOEW_DSM_Daten_Potenzial.pdf){ width=85% }
 
-# DSM formualtion 1: Zerrahn \& Schill
+# DSM formualtion 1: Zerrahn \& Schill (interval)
 
 $$\quad \dot{E}_{t} \quad = \quad demand_{t} \quad + \quad DSM_{t}^{up} \quad - \quad \sum_{tt=t-L}^{t+L} DSM_{t,tt}^{do}  \qquad \forall t$$
 
@@ -53,23 +53,140 @@ $$ \quad \dot{E}_{t} = demand_{t} + DSM_{t}^{updown} \quad \forall t $$
 
 $$ \quad  \sum_{t=0}^{24} DSM_{t}^{updown} = 0 \quad \forall t $$
 
+# Basic testing data
+
+![](img/DSM-shift-input-data_basic.png)
+
 # How it works
 
-TODO: basic example (graphic) showing intended functionality
+:::::: {.columns}
+::: {.column  width=45%} 
+![](img/DSM-shift_basic.png)
+:::
+
+::: {.column  width=40%}
+**Delay time:** ??
+
+\vspace{10pt}
+
+**What's happening**
+:::
+:::::: 
 
 
-# Shifting energy exceeding the delay time
+# Shifting energy exceeding the delay time (basic)
 
-TODO: basic example 
+:::::: {.columns}
+::: {.column  width=45%} 
+![](img/DSM-shift-exceeding-delay-time_basic.png)
+:::
 
-# Shifting energy exceeding the delay time
+::: {.column  width=40%}
+**Delay time:** ??
 
-TODO: describe what's happening
+\vspace{10pt}
 
-# Limited by DSM events in between
+**What's happening**
+:::
+:::::: 
 
-TODO: (maybe multiple slides) Show how the DSM shift that exceeds delay time is limited by other DSM events in between
 
-# Comparing both formulations
+# Limited by DSM events in between (50 %)
 
-TODO: a figure showing how DSM is used in each approach
+
+:::::: {.columns}
+::: {.column  width=45%} 
+![](img/DSM-shift-exceeding-delay-time_25percent.png)
+:::
+
+::: {.column  width=40%}
+**Delay time:** ??
+
+\vspace{10pt}
+
+**Intermediate DSM trigger:**\
+50 % of $DSM_{up}$
+
+\vspace{10pt}
+
+**What's happening**
+:::
+:::::: 
+
+# Effect of delay time
+
+
+:::::: {.columns}
+::: {.column  width=45%} 
+![](img/DSM-shift-exceeding-delay-time_delay-1.png)
+:::
+
+::: {.column  width=40%}
+**Delay time:** 1
+
+
+\vspace{10pt}
+
+**What's happening**
+:::
+::::::
+
+# Effect of delay time
+
+
+:::::: {.columns}
+::: {.column  width=45%} 
+![](img/DSM-shift-exceeding-delay-time_delay-2.png)
+:::
+
+::: {.column  width=40%}
+**Delay time:** 2
+
+
+\vspace{10pt}
+
+**What's happening**
+:::
+::::::
+
+# Effect of delay time
+
+:::::: {.columns}
+::: {.column  width=45%} 
+![](img/DSM-shift-exceeding-delay-time_delay-3.png)
+:::
+
+::: {.column  width=40%}
+**Delay time:** 3
+
+
+\vspace{10pt}
+
+**What's happening**
+:::
+::::::
+
+# Effect of delay time
+
+:::::: {.columns}
+::: {.column  width=45%} 
+![](img/DSM-shift-exceeding-delay-time_delay-6.png)
+:::
+
+::: {.column  width=40%}
+**Delay time:** 6
+
+
+\vspace{10pt}
+
+**What's happening**
+:::
+::::::
+
+
+# Comparing both formulations -- delay method
+
+
+![](img/DSM-activity_delay-method_4days.png)
+
+
