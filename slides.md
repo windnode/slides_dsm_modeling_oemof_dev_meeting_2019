@@ -10,6 +10,60 @@ date: December 4, 2019
 theme: rli
 ...
 
+# {.plain}
+
+\centering
+![](img/Plot_delay_2013-01-01.pdf){ width=85% }
+
+# The code -- data
+
+~~~ python
+# Create some data
+pv_day = [(-(1 / 6 * x ** 2) + 6) / 6 for x in range(-6, 7)]
+pv_ts = [0] * 6 + pv_day + [0] * 6
+data_dict = {"demand_el": [3] * len(pv_ts),
+             "pv": pv_ts,
+             "Cap_up": [0.5] * len(pv_ts),
+             "Cap_do": [0.5] * len(pv_ts)}
+data = pd.DataFrame.from_dict(data_dict)
+
+# Do timestamp stuff
+datetimeindex = pd.date_range(start='1/1/2013', periods=len(data.index), freq='H')
+data['timestamp'] = datetimeindex
+data.set_index('timestamp', inplace=True)
+~~~
+
+# Surrounding minimal energy system 
+
+~~~ python
+es = solph.EnergySystem(timeindex=datetimeindex)
+Node.registry = es
+
+b_elec = solph.Bus(label='Electricity bus')
+
+grid = solph.Source(
+	label='Grid',
+	outputs={b_elec: solph.Flow(nominal_value=10000,variable_costs=50)})
+
+pv = solph.Source(
+	label='pv',
+	outputs={b_elec: solph.Flow(actual_value=data['pv'], fixed=True, nominal_value=3.5)})
+~~~
+
+# SinkDSM component
+
+~~~ python
+# Create DSM Sink
+demand_dsm = solph.custom.SinkDSM(label='DSM',
+                                  inputs={b_elec: solph.Flow()},
+                                  capacity_up=data['Cap_up'],
+                                  capacity_down=data['Cap_do'],
+                                  delay_time=6,
+                                  demand=data['demand_el'],
+                                  method="delay",
+                                  cost_dsm_down=5)
+~~~
+
 # Project context
 
 * Research project WindNODE
