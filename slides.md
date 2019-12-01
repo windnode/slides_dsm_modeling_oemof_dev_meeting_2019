@@ -85,27 +85,48 @@ Available data: technical DSM potential for groups of households
 
 # DSM formualtion 1: Zerrahn \& Schill (interval)
 
-$$\quad \dot{E}_{t} \quad = \quad demand_{t} \quad + \quad DSM_{t}^{up} \quad - \quad \sum_{tt=t-L}^{t+L} DSM_{t,tt}^{do}  \qquad \forall t$$
+\vspace{-17pt}
+\begin{equation}
+\quad \dot{E}_{t} = demand_{t} + DSM_{t}^{up} - \sum_{tt=t-L}^{t+L} DSM_{t,tt}^{do}  \quad \forall t \in \mathbb{T}
+\end{equation}
 
-$$ \quad DSM_{t}^{up} \quad = \quad \sum_{tt=t-L}^{t+L} DSM_{t,tt}^{do} \qquad \forall t $$
+\begin{equation}
+\quad DSM_{t}^{up} = \sum_{tt=t-L}^{t+L} DSM_{t,tt}^{do} \quad \forall t \in \mathbb{T}
+\end{equation}
 
-$$ \quad DSM_{t}^{up} \quad \leq \quad E_{t}^{up} \qquad \forall t $$
+\begin{equation}
+\quad DSM_{t}^{up} \leq  E_{t}^{up} \quad \forall t \in \mathbb{T}
+\end{equation}
 
-$$ \quad \sum_{t=tt-L}^{tt+L} DSM_{t,tt}^{do} \quad \leq \quad E_{t}^{do} \qquad \forall tt $$
+\begin{equation}
+\quad \sum_{tt=t-L}^{t+L} DSM_{t,tt}^{do}  \leq E_{t}^{do} \quad \forall t \in \mathbb{T}\end{equation}
 
-$$ \quad DSM_{tt}^{up} \quad + \quad \sum_{t=tt-L}^{tt+L} DSM_{t,tt}^{do} \quad \leq \quad max \{ E_{t}^{up}, E_{t}^{do} \} \qquad \forall tt $$ 
-
+\begin{equation}
+\quad DSM_{t}^{up}  + \sum_{tt=t-L}^{t+L} DSM_{t,tt}^{do} \leq max \{ E_{t}^{up}, E_{t}^{do} \}\quad \forall t \in \mathbb{T}
+\end{equation}
 
 
 # DSM formulation 2: Interval
 
 The dataset for DSM potential does not allow to shift energy across days!
 
-$$\quad  E_{t}^{do} < DSM_{t}^{updown} < E_{t}^{up} \quad \forall t$$
+\begin{equation}
+\quad \dot{E}_{t} = demand_{t} + DSM_{t}^{up} - DSM_{t}^{do}  \quad \forall t \in \mathbb{T}
+\end{equation}
 
-$$ \quad \dot{E}_{t} = demand_{t} + DSM_{t}^{updown} \quad \forall t $$
+\begin{equation}
+\quad  DSM_{t}^{up} \leq E_{t}^{up} \quad \forall t \in \mathbb{T}
+\end{equation}
 
-$$ \quad  \sum_{t=0}^{24} DSM_{t}^{updown} = 0 \quad \forall t $$
+\begin{equation}
+\quad DSM_{t}^{do} \leq  E_{t}^{do} \quad \forall t \in \mathbb{T}
+\end{equation}
+
+\begin{equation}
+\quad  \sum_{t=t_s}^{t_s+\tau} DSM_{t}^{up} = \sum_{t=t_s}^{t_s+\tau}
+        DSM_{t}^{do} \quad \forall t_s \in \{k \in \mathbb{T} \mid k \mod \tau = 0\}
+\end{equation}
+
 
 # Basic testing data
 
