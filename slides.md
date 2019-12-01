@@ -6,7 +6,7 @@ title: DSM modeling in oemof.solph
 subtitle: Introducing the custom component SinkDSM
 institute: Reiner Lemoine Institut
 classoption: aspectratio=169
-date: December 4, 2019
+date: December 6, 2019
 theme: rli
 ...
 
