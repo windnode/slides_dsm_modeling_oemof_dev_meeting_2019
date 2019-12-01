@@ -17,6 +17,11 @@ header-includes:
     \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}} % \pgfkeysalso doesn't change the path
   },
   }
+  \newcommand{\tel}{+49 (0)30 1208 434 72}
+  \newcommand{\email}{guido.plessmann@rl-institut.de}
+  \newcommand{\twitter}{\href{https://twitter.com/gplssm}{@gplssm}}
+  \newcommand{\finalstatement}{}
+  \hypersetup{colorlinks,urlcolor=rlilinkcolor}
 ...
 
 # Project context
@@ -361,3 +366,7 @@ TODO: add image for interval method on "real data"
    - Move to `solph.Components` by v0.4.0?
    - Responsibility for `SinkDSM`?
    - Roadmap
+
+# {.plain}
+
+\insertendpagecontent
