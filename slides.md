@@ -82,7 +82,8 @@ data_dict = {"demand_el": [3] * len(pv_ts),
 data = pd.DataFrame.from_dict(data_dict)
 
 # Do timestamp stuff
-datetimeindex = pd.date_range(start='1/1/2013', periods=len(data.index), freq='H')
+datetimeindex = pd.date_range(start='1/1/2013', periods=len(data.index), 
+  freq='H')
 data['timestamp'] = datetimeindex
 data.set_index('timestamp', inplace=True)
 ~~~
@@ -101,7 +102,8 @@ grid = solph.Source(
 
 pv = solph.Source(
 	label='pv',
-	outputs={b_elec: solph.Flow(actual_value=data['pv'], fixed=True, nominal_value=3.5)})
+	outputs={b_elec: solph.Flow(actual_value=data['pv'], fixed=True, 
+    nominal_value=3.5)})
 ~~~
 
 # SinkDSM component
@@ -125,17 +127,23 @@ demand_dsm = solph.custom.SinkDSM(label='DSM',
 * Intended analysis: potential of flexibility options to foster regional energy supply
 * Demand-Side Management in households is one option
 
+\vspace{10pt}
+
+Code (under development): [https://github.com/windnode/WindNODE_ABW](https://github.com/windnode/WindNODE_ABW)
+
 # DSM modeling for households
 
 Available data: technical DSM potential for groups of households
 
+\center
 ![](img/IOEW_DSM_Daten_Zusammensetzung.pdf){ width=85% }
 
 <!-- Two DSM model formulations are provided by [SinkDSM](https://oemof.readthedocs.io/en/latest/api/oemof.solph.html#oemof.solph.custom.SinkDSM) -->
 
 # DSM potential
 
-![](img/IOEW_DSM_Daten_Potenzial.pdf){ width=85% }
+\center
+![](img/IOEW_DSM_Daten_Potenzial.pdf){ width=75% }
 
 # DSM formualtion 1: Zerrahn \& Schill (interval)
 
