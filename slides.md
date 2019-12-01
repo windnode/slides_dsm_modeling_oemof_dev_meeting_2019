@@ -143,24 +143,14 @@ demand_dsm = solph.custom.SinkDSM(label='DSM',
 # DSM formualtion 1: Zerrahn \& Schill (delay)
 
 \vspace{-17pt}
-\begin{equation}
-\quad \dot{E}_{t} = demand_{t} + DSM_{t}^{up} - \sum_{tt=t-L}^{t+L} DSM_{t,tt}^{do}  \quad \forall t \in \mathbb{T}
-\end{equation}
-
-\begin{equation}
-\quad DSM_{t}^{up} = \sum_{tt=t-L}^{t+L} DSM_{t,tt}^{do} \quad \forall t \in \mathbb{T}
-\end{equation}
-
-\begin{equation}
-\quad DSM_{t}^{up} \leq  E_{t}^{up} \quad \forall t \in \mathbb{T}
-\end{equation}
-
-\begin{equation}
-\quad \sum_{tt=t-L}^{t+L} DSM_{t,tt}^{do}  \leq E_{t}^{do} \quad \forall t \in \mathbb{T}\end{equation}
-
-\begin{equation}
-\quad DSM_{t}^{up}  + \sum_{tt=t-L}^{t+L} DSM_{t,tt}^{do} \leq max \{ E_{t}^{up}, E_{t}^{do} \}\quad \forall t \in \mathbb{T}
-\end{equation}
+\begin{align}
+\onslide<1->{\quad \dot{E}_{t} = demand_{t} + DSM_{t}^{up} - \sum_{tt=t-L}^{t+L} DSM_{t,tt}^{do}  \quad \forall t \in \mathbb{T}\\}
+\onslide<2->{\quad DSM_{t}^{up} = \sum_{tt=t-L}^{t+L} DSM_{t,tt}^{do} \quad \forall t \in \mathbb{T}\\}
+\onslide<3->{\quad DSM_{t}^{up} \leq  E_{t}^{up} \quad \forall t \in \mathbb{T}\\}
+\onslide<4->{\quad \sum_{tt=t-L}^{t+L} DSM_{t,tt}^{do}  \leq E_{t}^{do} \quad \forall t \in \mathbb{T}\\}
+\onslide<5>{\quad DSM_{t}^{up}  + \sum_{tt=t-L}^{t+L} DSM_{t,tt}^{do} \leq max \{ E_{t}^{up}, E_{t}^{do} \}\quad \forall t \in \mathbb{T}\\}
+\notag
+\end{align}
 
 
 # Basic testing data
@@ -331,22 +321,14 @@ Available data: technical DSM potential for groups of households
 
 The dataset for DSM potential does not allow to shift energy across days!
 
-\begin{equation}
-\quad \dot{E}_{t} = demand_{t} + DSM_{t}^{up} - DSM_{t}^{do}  \quad \forall t \in \mathbb{T}
-\end{equation}
-
-\begin{equation}
-\quad  DSM_{t}^{up} \leq E_{t}^{up} \quad \forall t \in \mathbb{T}
-\end{equation}
-
-\begin{equation}
-\quad DSM_{t}^{do} \leq  E_{t}^{do} \quad \forall t \in \mathbb{T}
-\end{equation}
-
-\begin{equation}
-\quad  \sum_{t=t_s}^{t_s+\tau} DSM_{t}^{up} = \sum_{t=t_s}^{t_s+\tau}
-        DSM_{t}^{do} \quad \forall t_s \in \{k \in \mathbb{T} \mid k \mod \tau = 0\}
-\end{equation}
+\begin{align}
+\onslide<2->{\quad \dot{E}_{t} = demand_{t} + DSM_{t}^{up} - DSM_{t}^{do}  \quad \forall t \in \mathbb{T}\\}
+\onslide<3->{\quad  DSM_{t}^{up} \leq E_{t}^{up} \quad \forall t \in \mathbb{T}\\}
+\onslide<4->{\quad DSM_{t}^{do} \leq  E_{t}^{do} \quad \forall t \in \mathbb{T}\\}
+\onslide<5->{\quad  \sum_{t=t_s}^{t_s+\tau} DSM_{t}^{up} = \sum_{t=t_s}^{t_s+\tau}
+        DSM_{t}^{do} \quad \forall t_s \in \{k \in \mathbb{T} \mid k \mod \tau = 0\}\\}
+\notag
+\end{align}
 
 
 # Comparing both formulations -- delay method
