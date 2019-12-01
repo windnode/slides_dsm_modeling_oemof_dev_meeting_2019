@@ -130,8 +130,12 @@ demand_dsm = solph.custom.SinkDSM(label='DSM',
 \centering
 ![](img/Plot_delay_2013-01-01.pdf){ width=85% }
 
+# How to model DSM?
 
-# DSM formualtion 1: Zerrahn \& Schill (interval)
+\center
+![](img/zerrahn_paper_dsm_longer.png)
+
+# DSM formualtion 1: Zerrahn \& Schill (delay)
 
 \vspace{-17pt}
 \begin{equation}
@@ -153,6 +157,170 @@ demand_dsm = solph.custom.SinkDSM(label='DSM',
 \quad DSM_{t}^{up}  + \sum_{tt=t-L}^{t+L} DSM_{t,tt}^{do} \leq max \{ E_{t}^{up}, E_{t}^{do} \}\quad \forall t \in \mathbb{T}
 \end{equation}
 
+
+# Basic testing data
+
+![](img/DSM-shift-input-data_basic.png)
+
+# How it works
+
+:::::: {.columns}
+::: {.column  width=45%} 
+![](img/DSM-shift_basic.png)
+:::
+
+::: {.column  width=40%}
+**Delay time:** 2
+
+\vspace{10pt}
+
+**What's happening**
+
+- Interrupted wind generation in hour 4 set 100 MWh on hold
+- Doubled wind generation in hour 7 compensates for demand that is set on hold
+- Doubled wind generation around afternoon on the second day goes to excess
+:::
+:::::: 
+
+
+# Shifting energy exceeding the delay time (basic)
+
+:::::: {.columns}
+::: {.column  width=45%} 
+![](img/DSM-shift-exceeding-delay-time_basic.png)
+:::
+
+::: {.column  width=40%}
+**Delay time:** 1
+
+\vspace{10pt}
+
+**What's happening**
+
+- DSM allows to shift energy from first day morning to second day afternoon. How is that possible?
+- Zerrahn et al.'s (2015) constraints allow to trigger $DSM^{up}$ and $DSM^{do}$ at the same time
+- $DSM^{up}$ and $DSM^{do}$ are constrained to the tighter bound (Eq. (5))
+:::
+:::::: 
+
+
+# Limited by DSM events in between (50 %)
+
+
+:::::: {.columns}
+::: {.column  width=45%} 
+![](img/DSM-shift-exceeding-delay-time_25percent.png)
+:::
+
+::: {.column  width=40%}
+**Delay time:** 1
+
+\vspace{10pt}
+
+**Intermediate DSM trigger:**\
+50 % of $DSM_{up}$
+
+\vspace{10pt}
+
+**What's happening**
+
+- DSM activity in the morning of the first day: 50 MWh
+- DSM shift that exceeds the delay time is limited: 50 MWh $\rightarrow$ 25 MWh
+:::
+:::::: 
+
+# Effect of delay time
+
+
+:::::: {.columns}
+::: {.column  width=45%} 
+![](img/DSM-shift-exceeding-delay-time_delay-1.png)
+:::
+
+::: {.column  width=40%}
+**Delay time:** 1
+
+
+\vspace{10pt}
+
+**What's happening**
+
+- DSM shift exceeding the delay of 50 MWh
+:::
+::::::
+
+# Effect of delay time
+
+
+:::::: {.columns}
+::: {.column  width=45%} 
+![](img/DSM-shift-exceeding-delay-time_delay-2.png)
+:::
+
+::: {.column  width=40%}
+**Delay time:** 2
+
+
+\vspace{10pt}
+
+**What's happening**
+
+- Longer delay times allow for more DSM shifts exceeding the delay time
+:::
+::::::
+
+# Effect of delay time
+
+:::::: {.columns}
+::: {.column  width=45%} 
+![](img/DSM-shift-exceeding-delay-time_delay-3.png)
+:::
+
+::: {.column  width=40%}
+**Delay time:** 3
+
+
+\vspace{10pt}
+
+**What's happening**
+
+- ...and more
+:::
+::::::
+
+# Effect of delay time
+
+:::::: {.columns}
+::: {.column  width=45%} 
+![](img/DSM-shift-exceeding-delay-time_delay-6.png)
+:::
+
+::: {.column  width=40%}
+**Delay time:** 6
+
+
+\vspace{10pt}
+
+**What's happening**
+
+- and even more
+:::
+::::::
+
+
+# DSM modeling for households
+
+Available data: technical DSM potential for groups of households
+
+\center
+![](img/IOEW_DSM_Daten_Zusammensetzung.pdf){ width=85% }
+
+<!-- Two DSM model formulations are provided by [SinkDSM](https://oemof.readthedocs.io/en/latest/api/oemof.solph.html#oemof.solph.custom.SinkDSM) -->
+
+# DSM potential
+
+\center
+![](img/IOEW_DSM_Daten_Potenzial.pdf){ width=75% }
 
 # DSM formulation 2: Interval
 
@@ -176,154 +344,20 @@ The dataset for DSM potential does not allow to shift energy across days!
 \end{equation}
 
 
-# Basic testing data
-
-![](img/DSM-shift-input-data_basic.png)
-
-# How it works
-
-:::::: {.columns}
-::: {.column  width=45%} 
-![](img/DSM-shift_basic.png)
-:::
-
-::: {.column  width=40%}
-**Delay time:** ??
-
-\vspace{10pt}
-
-**What's happening**
-:::
-:::::: 
-
-
-# Shifting energy exceeding the delay time (basic)
-
-:::::: {.columns}
-::: {.column  width=45%} 
-![](img/DSM-shift-exceeding-delay-time_basic.png)
-:::
-
-::: {.column  width=40%}
-**Delay time:** ??
-
-\vspace{10pt}
-
-**What's happening**
-:::
-:::::: 
-
-
-# Limited by DSM events in between (50 %)
-
-
-:::::: {.columns}
-::: {.column  width=45%} 
-![](img/DSM-shift-exceeding-delay-time_25percent.png)
-:::
-
-::: {.column  width=40%}
-**Delay time:** ??
-
-\vspace{10pt}
-
-**Intermediate DSM trigger:**\
-50 % of $DSM_{up}$
-
-\vspace{10pt}
-
-**What's happening**
-:::
-:::::: 
-
-# Effect of delay time
-
-
-:::::: {.columns}
-::: {.column  width=45%} 
-![](img/DSM-shift-exceeding-delay-time_delay-1.png)
-:::
-
-::: {.column  width=40%}
-**Delay time:** 1
-
-
-\vspace{10pt}
-
-**What's happening**
-:::
-::::::
-
-# Effect of delay time
-
-
-:::::: {.columns}
-::: {.column  width=45%} 
-![](img/DSM-shift-exceeding-delay-time_delay-2.png)
-:::
-
-::: {.column  width=40%}
-**Delay time:** 2
-
-
-\vspace{10pt}
-
-**What's happening**
-:::
-::::::
-
-# Effect of delay time
-
-:::::: {.columns}
-::: {.column  width=45%} 
-![](img/DSM-shift-exceeding-delay-time_delay-3.png)
-:::
-
-::: {.column  width=40%}
-**Delay time:** 3
-
-
-\vspace{10pt}
-
-**What's happening**
-:::
-::::::
-
-# Effect of delay time
-
-:::::: {.columns}
-::: {.column  width=45%} 
-![](img/DSM-shift-exceeding-delay-time_delay-6.png)
-:::
-
-::: {.column  width=40%}
-**Delay time:** 6
-
-
-\vspace{10pt}
-
-**What's happening**
-:::
-::::::
-
-
-# DSM modeling for households
-
-Available data: technical DSM potential for groups of households
-
-\center
-![](img/IOEW_DSM_Daten_Zusammensetzung.pdf){ width=85% }
-
-<!-- Two DSM model formulations are provided by [SinkDSM](https://oemof.readthedocs.io/en/latest/api/oemof.solph.html#oemof.solph.custom.SinkDSM) -->
-
-# DSM potential
-
-\center
-![](img/IOEW_DSM_Daten_Potenzial.pdf){ width=75% }
-
 # Comparing both formulations -- delay method
 
 
 ![](img/DSM-activity_delay-method_4days.png)
 
+# Comparing both formulations -- interval method
 
+TODO: add image for interval method on "real data" 
+
+
+# Discussion
+
+#. Who plans to model DSM with oemof.solph in the near future? 
+#. Further development on `SinkDSM`
+   - Move to `solph.Components` by v0.4.0?
+   - Responsibility for `SinkDSM`?
+   - Roadmap
