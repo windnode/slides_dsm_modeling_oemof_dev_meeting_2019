@@ -8,12 +8,6 @@
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{caption}[numbered]
 
-% Logo in headline
-\addtobeamertemplate{headline}{}{%
-\begin{tikzpicture}[remember picture,overlay]
-\node at([shift={(.42\paperwidth,-.82)}]current page.north) {\includegraphics[scale=0.1]{img/RLI_logo.pdf}};
-\end{tikzpicture}}
-
 % Title page background image and clipping
 \setbeamertemplate{background}{
   \begin{tikzpicture}
@@ -30,9 +24,9 @@
   \coordinate (paperBR) at (\paperwidth,0);
   
   % White triangle (1)
-  \coordinate (w1bL) at (0.3\paperwidth,0);
-  \coordinate (w1tL) at (0.3\paperwidth,\paperheight);
-  \coordinate (w1tR) at (0.3\paperwidth+\paperheight,\paperheight);
+  \coordinate (w1bL) at (0.299\paperwidth,0);
+  \coordinate (w1tL) at (0.299\paperwidth,\paperheight);
+  \coordinate (w1tR) at (0.299\paperwidth+\paperheight,\paperheight);
   
   % Crossing point
   \coordinate (midCross) at ($(w1bL)!0.55!(w1tR)$);
@@ -68,7 +62,7 @@
   \filldraw[draw=white,fill=white] (picUpN) -- (w1tR) -- (paperTR) -- (bgN) -- (bgW) -- (picUpS) -- (picUpE) -- cycle;
   \filldraw[draw=none,fill=rligraylight] (bgS) -- (bgW) -- (bgN) -- (paperBR) -- cycle;
   
-  \draw (1,0.67\paperheight) -- (0.5\textwidth,0.67\paperheight);
+  \draw (1,0.685\paperheight) -- (0.5\textwidth,0.685\paperheight);
   
 
   \ifnum\thepage>1\relax%
@@ -83,9 +77,9 @@
 \begin{picture}(0,0)
             \put(0,-110.7){%
                 \begin{minipage}[b][45mm][t]{.5\textwidth}
-                    \usebeamerfont{title}{\textbf{\inserttitle}\par}
+                    \usebeamerfont{title}{\bfseries{\inserttitle}\par}
                     \usebeamerfont{subtitle}{\insertsubtitle\par\vspace{0.5cm}}
-                    \usebeamerfont{author}{\insertauthor\par\vspace{0.2cm}}
+                    \usebeamerfont{author}{\insertauthor\par\vspace{0.5cm}}
                     \usebeamerfont{institute}{\insertinstitute\par\vspace{0.1cm}}
                     \usebeamerfont{date}{\insertdate\par}
                 \end{minipage}
