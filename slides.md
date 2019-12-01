@@ -19,6 +19,17 @@ header-includes:
   }
 ...
 
+# Project context
+
+* Research project WindNODE
+* Building a regional ESM for Anhalt-Bitterfeld-Wittenberg
+* Intended analysis: potential of flexibility options to foster regional energy supply
+* Demand-Side Management in households is one option
+
+\vspace{10pt}
+
+Code (under development): [https://github.com/windnode/WindNODE_ABW](https://github.com/windnode/WindNODE_ABW)
+
 # A minimal testing energy system
 
 :::::: {.columns}
@@ -63,13 +74,7 @@ header-includes:
 ::::::
 
 
-
-# {.plain}
-
-\centering
-![](img/Plot_delay_2013-01-01.pdf){ width=85% }
-
-# The code -- data
+# Create some data
 
 ~~~ python
 # Create some data
@@ -120,30 +125,11 @@ demand_dsm = solph.custom.SinkDSM(label='DSM',
                                   cost_dsm_down=5)
 ~~~
 
-# Project context
+# {.plain}
 
-* Research project WindNODE
-* Building a regional ESM for Anhalt-Bitterfeld-Wittenberg
-* Intended analysis: potential of flexibility options to foster regional energy supply
-* Demand-Side Management in households is one option
+\centering
+![](img/Plot_delay_2013-01-01.pdf){ width=85% }
 
-\vspace{10pt}
-
-Code (under development): [https://github.com/windnode/WindNODE_ABW](https://github.com/windnode/WindNODE_ABW)
-
-# DSM modeling for households
-
-Available data: technical DSM potential for groups of households
-
-\center
-![](img/IOEW_DSM_Daten_Zusammensetzung.pdf){ width=85% }
-
-<!-- Two DSM model formulations are provided by [SinkDSM](https://oemof.readthedocs.io/en/latest/api/oemof.solph.html#oemof.solph.custom.SinkDSM) -->
-
-# DSM potential
-
-\center
-![](img/IOEW_DSM_Daten_Potenzial.pdf){ width=75% }
 
 # DSM formualtion 1: Zerrahn \& Schill (interval)
 
@@ -320,6 +306,20 @@ The dataset for DSM potential does not allow to shift energy across days!
 :::
 ::::::
 
+
+# DSM modeling for households
+
+Available data: technical DSM potential for groups of households
+
+\center
+![](img/IOEW_DSM_Daten_Zusammensetzung.pdf){ width=85% }
+
+<!-- Two DSM model formulations are provided by [SinkDSM](https://oemof.readthedocs.io/en/latest/api/oemof.solph.html#oemof.solph.custom.SinkDSM) -->
+
+# DSM potential
+
+\center
+![](img/IOEW_DSM_Daten_Potenzial.pdf){ width=75% }
 
 # Comparing both formulations -- delay method
 
