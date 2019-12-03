@@ -352,17 +352,36 @@ The dataset for DSM potential does not allow to shift energy across days!
 # Comparing both formulations -- delay method
 
 
-![](img/DSM-activity_delay-method_4days.png)
+\center
+![](img/DSM-activity_delay_no_accum.pdf){ width=67% }
 
 # Comparing both formulations -- interval method
 
-TODO: add image for interval method on "real data" 
+\center
+![](img/DSM-activity_interval_no_accum.pdf){ width=67% }
 
+# DSM energy on hold
+
+\center
+![](img/DSM-activity_dsm_on_hold.pdf)
+
+# Comparison by numbers
+
+|                                                           | demand\_el | dsm\_tot | excess | cap\_up | cap\_do | wind |   pv | coal |
+| :-------------------------------------------------------- | ---------: | -------: | -----: | ------: | ------: | ---: | ---: | ----: |
+| 1 HH 3 P. [delay] |       91.0 |     18.0 |   43.0 |   109.0 |    34.0 |  96.0 | 15.0 |  23.0 |
+| 10 HH           |       92.0 |     14.0 |   42.0 |    59.0 |    27.0 |  96.0 | 15.0 |  22.0 |
+| 50 HH [delay]           |       89.0 |     13.0 |   43.0 |    57.0 |    27.0 |  96.0 | 15.0 |  21.0 |
+| 100 HH [delay]          |       88.0 |     13.0 |   44.0 |    53.0 |    26.0 |  96.0 | 15.0 |  21.0 |
+| 1 HH 3 P. [interval] |       91.0 |     18.0 |   44.0 |   109.0 |    34.0 |   96.0 | 15.0 |  24.0 |
+| 10 HH [interval]        |       92.0 |     12.0 |   43.0 |    59.0 |    27.0 |   96.0 | 15.0 |  23.0 |
+| 50 HH [interval]        |       89.0 |     11.0 |   44.0 |    57.0 |    27.0 |  96.0 | 15.0 |  22.0 |
+| 100 HH [interval]      |       88.0 |     11.0 |   45.0 |    53.0 |    26.0 |  96.0 | 15.0 |  22.0 |
 
 # Discussion
 
 #. Who plans to model DSM with oemof.solph in the near future? 
-#. Further development on `SinkDSM`
+#. Further development of `SinkDSM`
    - Move to `solph.Components` by v0.4.0?
    - Responsibility for `SinkDSM`?
    - Roadmap
