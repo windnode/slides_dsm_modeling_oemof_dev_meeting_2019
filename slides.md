@@ -330,6 +330,8 @@ The dataset for DSM potential does not allow to shift energy across days!
 \notag
 \end{align}
 
+\onslide<6->Using $\tau = 1$ sets the window for DSM activity to exactly one day.
+
 
 # Comparing both formulations -- delay method
 
