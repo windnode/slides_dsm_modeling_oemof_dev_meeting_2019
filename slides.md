@@ -147,8 +147,8 @@ demand_dsm = solph.custom.SinkDSM(label='DSM',
 \onslide<1->{\quad \dot{E}_{t} = demand_{t} + DSM_{t}^{up} - \sum_{tt=t-L}^{t+L} DSM_{t,tt}^{do}  \quad \forall t \in \mathbb{T}\\}
 \onslide<2->{\quad DSM_{t}^{up} = \sum_{tt=t-L}^{t+L} DSM_{t,tt}^{do} \quad \forall t \in \mathbb{T}\\}
 \onslide<3->{\quad DSM_{t}^{up} \leq  E_{t}^{up} \quad \forall t \in \mathbb{T}\\}
-\onslide<4->{\quad \sum_{tt=t-L}^{t+L} DSM_{t,tt}^{do}  \leq E_{t}^{do} \quad \forall t \in \mathbb{T}\\}
-\onslide<5>{\quad DSM_{t}^{up}  + \sum_{tt=t-L}^{t+L} DSM_{t,tt}^{do} \leq max \{ E_{t}^{up}, E_{t}^{do} \}\quad \forall t \in \mathbb{T}\\}
+\onslide<4->{\quad \sum_{t=tt-L}^{tt+L} DSM_{t,tt}^{do}  \leq E_{tt}^{do} \quad \forall tt \in \mathbb{T}\\}
+\onslide<5>{\quad DSM_{t}^{up}  + \sum_{t=tt-L}^{tt+L} DSM_{t,tt}^{do} \leq max \{ E_{tt}^{up}, E_{tt}^{do} \}\quad \forall tt \in \mathbb{T}\\}
 \notag
 \end{align}
 
@@ -165,7 +165,7 @@ demand_dsm = solph.custom.SinkDSM(label='DSM',
 :::
 
 ::: {.column  width=40%}
-**Delay time:** 2
+**Delay time:** 3
 
 \vspace{10pt}
 
@@ -299,6 +299,12 @@ demand_dsm = solph.custom.SinkDSM(label='DSM',
 **What's happening**
 
 - and even more
+
+\vspace{10pt}
+
+
+\onslide<2->{\bfseries{But...\\}}
+\onslide<2->{the modeler interprets his/her results!}
 :::
 ::::::
 
